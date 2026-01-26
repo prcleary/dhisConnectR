@@ -30,6 +30,9 @@ jobs:
             rmarkdown
             knitr
 
+      - name: Install package
+          run: R CMD INSTALL .
+
       - name: Render README
         run: |
           Rscript -e 'rmarkdown::render("README.Rmd", output_file = "README.md")'
