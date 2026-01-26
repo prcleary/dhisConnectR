@@ -4,9 +4,6 @@ on:
   push:
     branches: [main, master]
   pull_request:
-  schedule:
-  # Every Sunday at midnight
-  - cron: '0 0 * * 0'
 
 name: R-CMD-check.yaml
 
@@ -52,6 +49,3 @@ jobs:
         with:
           upload-snapshots: true
           build_args: 'c("--no-manual","--compact-vignettes=gs+qpdf")'
-
-name: Render README
-run: Rscript -e 'rmarkdown::render("README.Rmd")'
