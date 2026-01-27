@@ -1,9 +1,9 @@
 Package: dhisConnectR
-Title: Useful R Functions For DHIS 2 Integration
-Version: 0.1
+Title: R Functions For DHIS 2 Integration
+Version: 0.0.1
 Authors@R: 
     person("Paul", "Cleary", , "paul.cleary@ukhsa.gov.uk", role = c("aut", "cre"))
-Description: R functions that can be used to extract or insert data using the DHIS 2 API 
+Description: R functions that can be used to extract or insert data using the DHIS 2 API.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
