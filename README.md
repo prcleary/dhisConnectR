@@ -4,7 +4,6 @@
 # dhisConnectR
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 The goal of dhisConnectR is to …
