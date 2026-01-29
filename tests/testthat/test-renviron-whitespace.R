@@ -9,7 +9,7 @@ test_that(".Renviron replacement ignores whitespace", {
     lines <- readLines(renviron)
 
     expect_false(any(grepl('X\\s*=\\s*"old"', lines)))
-    expect_true(any(grepl('X="new"', lines)))
+    expect_true(any(grepl("^X\\s*=\\s*(['\"])new\\1$", lines)))
     expect_true(any(grepl('Y = "keep"', lines)))
     expect_true(any(grepl('Z= "also_keep"', lines)))
   })
