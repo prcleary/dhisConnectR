@@ -4,7 +4,7 @@
 \alias{set_env_vars}
 \title{Set Environment Variables Persistently for R}
 \usage{
-set_env_vars(..., persist = TRUE)
+set_env_vars(..., persist = TRUE, renviron = "~/.Renviron")
 }
 \arguments{
 \item{...}{Named character arguments specifying environment variables and
@@ -12,7 +12,10 @@ their values. Names correspond to variable names. Values must be character
 strings or \code{NULL}. \code{NULL} values trigger a prompt.}
 
 \item{persist}{Logical; if \code{TRUE} (default), variables are written to
-\code{~/.Renviron} for use in future R sessions.}
+\code{~Renviron} for use in future R sessions.}
+
+\item{renviron}{Path to \code{.Renviron} file. Uses system \code{.Renviron}
+by default. Mainly required for testing.}
 }
 \value{
 Invisibly returns a named character vector of environment variables

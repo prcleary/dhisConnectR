@@ -11,7 +11,9 @@
 #'   their values. Names correspond to variable names. Values must be character
 #'   strings or \code{NULL}. \code{NULL} values trigger a prompt.
 #' @param persist Logical; if \code{TRUE} (default), variables are written to
-#'   \code{~/.Renviron} for use in future R sessions.
+#'   \code{~Renviron} for use in future R sessions.
+#' @param renviron Path to \code{.Renviron} file. Uses system \code{.Renviron}
+#'  by default. Mainly required for testing.
 #'
 #' @return Invisibly returns a named character vector of environment variables
 #'   that were set.
@@ -49,8 +51,9 @@
 #' }
 #'
 #' @export
-set_env_vars <- function(..., persist = TRUE) {
+set_env_vars <- function(..., persist = TRUE, renviron = "~/.Renviron") {
   vars <- list(...)
+  renviron <- path.expand(renviron)
 
   if (!length(vars)) {
     stop("At least one environment variable must be supplied.", call. = FALSE)
@@ -85,9 +88,8 @@ set_env_vars <- function(..., persist = TRUE) {
   # Set variables for the current session
   do.call(Sys.setenv, as.list(vars))
 
-  # Persist to ~/.Renviron with whitespace-insensitive replacement
+  # Persist to renviron with whitespace-insensitive replacement
   if (persist) {
-    renviron <- path.expand("~/.Renviron")
     new_lines <- paste0(names(vars), "=", shQuote(vars))
 
     if (file.exists(renviron)) {
